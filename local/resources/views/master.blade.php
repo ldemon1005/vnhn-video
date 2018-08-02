@@ -58,8 +58,23 @@
     }
 
     function search_video() {
-        console.log("chào");
         document.getElementById('search_video').submit();
+    }
+
+    function play_video(id) {
+        $.ajax({
+            url: '/video/' + id,
+            method: 'get',
+            dataType: 'json',
+        }).fail(function (ui, status) {
+        }).done(function (data, status) {
+            if(data){
+                $(".top-video").html(data.content);
+                FB.XFBML.parse(document.getElementById('buttonShare'));
+//                $.getScript();
+                $('html, body').animate({scrollTop: "0px"});
+            }
+        })
     }
 </script>
 

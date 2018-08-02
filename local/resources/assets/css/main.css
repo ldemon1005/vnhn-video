@@ -67,7 +67,7 @@ a:hover {
 .top-video .title-cate {
 }
 
-.top-video h3{
+.top-video .title-cate h3{
     display: inline-block;
     margin-top: 20px;
     font-size: 14px;
@@ -80,8 +80,7 @@ a:hover {
 .top-video .title-video {
     margin-top: 20px;
 }
-
-.top-video h2{
+.top-video-content .title-video  h3{
     font-family: "Merriweather";
     font-size: 20px;
     font-weight: bold;
@@ -124,6 +123,7 @@ a:hover {
 
 .top-video .caption{
     font-size: 14px;
+    margin: 20px 0;
 }
 
 .group-top {
@@ -149,8 +149,9 @@ a:hover {
 .video-group .item h3{
     font-size: 16px;
     line-height: 1.4;
-    font-weight: bold;
+    font-weight: 500;
     font-family: "Merriweather";
+    text-transform: uppercase;
 }
 .video-group .item a {
     display: block;
@@ -163,7 +164,7 @@ a:hover {
 }
 
 .time-video {
-    font-size: 12px;
+    font-size: 11px;
     color: #999999;
 }
 
