@@ -24,7 +24,7 @@
             <div style="margin-left: 10px!important;" class="fb-like" data-href="{{asset ('?video='
                             .$video->slug.'---n-'
                             .$video->id)}}"
-                 data-action="like" data-size="small" data-layout="button_count"
+                 data-action="like" data-size="small" data-layout="button_count" data-show-faces="true"
                  data-share="true"></div>
         </div>
         <p class="caption">{!! $video->summary !!}</p>

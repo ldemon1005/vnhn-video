@@ -17,7 +17,7 @@ class IndexController extends Controller
 
         $video_id = $url[count($url)-1];
 
-        $menu_video = MenuVideo::where('status',1)->get();
+        $menu_video = MenuVideo::where('status',1)->orderBy('order')->get();
 
         if($video_id){
             $video_top = DB::table('video_vn')->find($video_id);
@@ -83,7 +83,7 @@ class IndexController extends Controller
     }
 
     function search_video(Request $request){
-        $menu_video = MenuVideo::where('status',1)->get();
+        $menu_video = MenuVideo::where('status',1)->orderBy('order')->get();
 
         $key_w = $request->get('key');
         $list_video = DB::table('video_vn')->where('title','like',"%$key_w%")

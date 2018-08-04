@@ -3,7 +3,7 @@
     <div id="main">
         <div id="mySidebar">
             <ul>
-                <li><a href="{{asset('')}}}"><i class="fas fa-home"></i>Trang chủ</a></li>
+                <li class="active"><a href="{{asset('')}}"><i class="fas fa-home"></i>Trang chủ</a></li>
                 @foreach($menu_video as $menu)
                     <li><a href="{{route('get_list_video',$menu->slug."---n-".$menu->id)}}"><i
                                     class="{{$menu->icon}}"></i>{{$menu->title}}</a></li>
@@ -35,7 +35,7 @@
                                      data-count="default"></div>
 
                                 <div style="margin-left: 10px!important;" class="fb-like" data-href="{{asset ('?video='.$video_top->slug.'---n-'.$video_top->id)}}"
-                                     data-action="like" data-size="small" data-layout="button_count"
+                                     data-action="like" data-size="small" data-layout="button_count" data-show-faces="true"
                                      data-share="true"></div>
                             </div>
                             <p class="caption">{!! $video_top->summary !!}</p>

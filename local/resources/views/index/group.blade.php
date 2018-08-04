@@ -3,7 +3,7 @@
     <div id="main">
         <div id="mySidebar">
             <ul>
-                <li><a href="{{asset('')}}}"><i class="fas fa-home"></i>Trang chủ</a></li>
+                <li class="active"><a href="{{asset('')}}"><i class="fas fa-home"></i>Trang chủ</a></li>
                 @foreach($menu_video as $menu)
                     <li class="{{$menu->id == $group->id ? 'active' : ''}}">
                         <a href="{{route('get_list_video',$menu->slug."---n-".$menu->id)}}"><i
@@ -37,12 +37,8 @@
                             <p class="time-video"><i class="fa fa-clock"></i> {{$video_top->created_at}} - VNHN</p>
                             <div class="d-flex">
                                 <div class="g-ytsubscribe" data-channel="GoogleDevelopers" data-layout="default" data-count="default"></div>
-                                {{--<div id="buttonShare" class="fb-share-button ml-2" data-href="{{asset ('?video='.$video_top->slug.'---n-'.$video_top->id)}}" data-layout="button" data-size="small" data-mobile-iframe="true">--}}
-                                     {{--<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"--}}
-                                                                  {{--class="fb-xfbml-parse-ignore">Chia sẻ</a>--}}
-                                {{--</div>--}}
                                 <div style="margin-left: 10px!important;" class="fb-like" data-href="{{asset ('?video='.$video_top->slug.'---n-'.$video_top->id)}}"
-                                     data-action="like" data-size="small" data-layout="button_count"
+                                     data-action="like" data-size="small" data-layout="button_count" data-show-faces="true"
                                      data-share="true"></div>
                             </div>
                             <p class="caption">{!! $video_top->summary !!}</p>

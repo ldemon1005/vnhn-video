@@ -16,11 +16,10 @@ class GroupController extends Controller
 
         $group = MenuVideo::find($group_id);
 
-        $menu_video = MenuVideo::where('status',1)->get();
+        $menu_video = MenuVideo::where('status',1)->orderBy('order')->get();
 
         $list_video = DB::table('video_vn')->where('groupid',$group_id)->orderByDesc('release_time')->paginate(9);
 
-//        dd($list_video);
 
         foreach ($list_video as $key => $video){
             if($video->type_link == 2){
