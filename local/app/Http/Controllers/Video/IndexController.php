@@ -23,6 +23,22 @@ class IndexController extends Controller
             $video_top = DB::table('video_vn')->find($video_id);
         }else $video_top = DB::table('video_vn')->where('status',1)->orderByDesc('release_time')->first();
 
+        if($video_top->type_link == 2){
+            $name = explode('v=',$video_top->url_video);
+            $videoId = '';
+            if(isset($name[1])) $videoId = $name[1];
+            else {
+                $name = explode('/',$video_top->url_video);
+                if(isset($name[count($name)-1])) $videoId = $name[count($name)-1];
+            }
+            if($videoId) {
+                $theURL = "http://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=$videoId&format=json";
+                $headers = get_headers($theURL);
+                $video_top->img_thumbnail = "http://img.youtube.com/vi/$videoId/hqdefault.jpg";
+            }
+            else $video_top->img_thumbnail = null;
+        }
+
         $group = DB::table('menu_video')->find($video_top->groupid);
 
         $video_top->group = $group;
@@ -66,6 +82,20 @@ class IndexController extends Controller
     function play_video($id){
         $video = DB::table('video_vn')->find($id);
 
+        if($video->type_link == 2){
+            $name = explode('v=',$video->url_video);
+            $videoId = '';
+            if(isset($name[1])) $videoId = $name[1];
+            else {
+                $name = explode('/',$video->url_video);
+                if(isset($name[count($name)-1])) $videoId = $name[count($name)-1];
+            }
+            if($videoId) {
+                $video->img_thumbnail = "http://img.youtube.com/vi/$videoId/hqdefault.jpg";
+            }
+            else $video->img_thumbnail = null;
+        }
+
         $group = DB::table('menu_video')->find($video->groupid);
 
         $video->group = $group;
@@ -76,9 +106,12 @@ class IndexController extends Controller
             'video' => $video
         ];
         $view = View::make('index.play_video',$data)->render();
+        $url = $video->slug.'---n-'.$video->id;
+        $video->link = asset($url);
 
         return json_encode([
-            'content' => $view
+            'content' => $view,
+            'meta_fb' => $video
         ]);
     }
 

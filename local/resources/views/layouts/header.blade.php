@@ -25,6 +25,3 @@
         </div>
     </div>
 </div>
-
-@section('script')
-@stop

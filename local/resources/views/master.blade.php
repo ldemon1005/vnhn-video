@@ -5,6 +5,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @if(isset($video_top))
+        <meta name="url_header" property="og:url"                content="{{asset ('?video='.$video_top->slug.'---n-'.$video_top->id)}}" />
+        <meta property="og:type"               content="video" />
+        <meta name="title_header" property="og:title"              content="{{$video_top->title}}" />
+        <meta name="summary_header" property="og:description"        content="{!! $video_top->summary !!}" />
+        <meta name="image_header" property="og:image"              content="{{$video_top->img_thumbnail}}" />
+    @endif
 
     <title>VNHN-Video</title>
 
@@ -21,6 +28,14 @@
 @include('layouts.header')
 @yield('main')
 @include('layouts.footer')
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=1084775134984999&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,15 +44,6 @@
 
 <script src="https://apis.google.com/js/platform.js"></script>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=761158710724257&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
 <script>
     function w3_open() {
         document.getElementById("mySidebar").style.width = "280px";
@@ -70,8 +76,12 @@
             if(data){
                 $(".top-video").html(data.content);
                 FB.XFBML.parse(document.getElementById('buttonShare'));
-//                $.getScript();
                 $('html, body').animate({scrollTop: "0px"});
+                $('.url_header').attr('content',data.meta_fb.link);
+                $('.title_header').attr('content',data.meta_fb.title);
+                $('.summary_header').attr('content',data.meta_fb.summary);
+                $('.image_header').attr('content',data.meta_fb.img_thumbnail);
+
             }
         })
     }

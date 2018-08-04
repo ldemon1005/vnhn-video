@@ -3,7 +3,7 @@
     <div id="main">
         <div id="mySidebar">
             <ul>
-                <li class="active"><a href="{{asset('')}}"><i class="fas fa-home"></i>Trang chủ</a></li>
+                <li><a href="{{asset('')}}"><i class="fas fa-home"></i>Trang chủ</a></li>
                 @foreach($menu_video as $menu)
                     <li><a href="{{route('get_list_video',$menu->slug."---n-".$menu->id)}}"><i
                                     class="{{$menu->icon}}"></i>{{$menu->title}}</a></li>

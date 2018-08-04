@@ -1,8 +1,10 @@
 #header {
 	height: 80px;
-	border-bottom: 2px solid #eeeeee;
-	display: flex;
-	line-height: 75px;
+    display: flex;
+    line-height: 75px;
+    box-shadow: 0 1px 3px #0003;
+    position: relative;
+    z-index: 1;
 }
 
 #header .icon-left {
@@ -53,10 +55,7 @@
 }
 
 #footer {
-	margin-top: 30px;
-	/*	height: 235px;
-    */	background-color: #ffffff;
-	/*	border-top: 3px solid #000000;*/
+	background-color: #ffffff;
 }
 .menu_footer{
 	background: #211c6e;
