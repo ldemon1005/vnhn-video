@@ -7,16 +7,17 @@
                     <div class="menu_footer_left">
                         <ul>
                             <li class="lang respon768"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
-                            <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
+                            <li class="lang respon768"><a href="{{ asset('') }}">RSS</a></li>
 
-                            <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7: 0888.790.111</a></li>
+                            <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7:
+                                    {{$web_info->hotline}}</a></li>
                             <li class="lang respon768"><a href="{{ asset('') }}">Đặt mua Tạp chí</a></li>
                             <li class="lang"><a href="{{ asset('') }}">Liên hệ quảng cáo</a></li>
                         </ul>
                     </div>
-                    <div class="menu_footer_right">
-                        <a onclick="back_to_top()">[Trở về đầu trang]</a>
-                    </div>
+                    {{-- <div class="menu_footer_right">
+                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Trở về đầu trang]' : '[Back to top]'}}
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -27,34 +28,34 @@
                         <a href="{{route('index')}}"><img src="{{asset('/local/resources/assets/images/logo-vnhn.png')}}"></a>
                     </div>
                     <div class="title">
-                        <div>- Viện Chính sách, Pháp luật và Quản lý</div>
-                        <div>- Liên hiệp các Hội Khoa học và Kỹ thuật Việt Nam</div>
+                        <div>- {{$web_info->summary_1}}</div>
+                        <div>- {{$web_info->summary_2}}</div>
                     </div>
                 </div>
 
                 <div class="footer-mid">
                     <p class="title">Việt Nam Hội Nhập</p>
-                    <p class="info-footer">Giấy phép số 153/GP- Cục PTTHTTĐT - Bộ thông tin và truyền thông cấp ngày 17/05/2017</p>
-                    <p class="info-footer"><span>Tổng biên tập : ĐOÀN MẠNH PHƯƠNG</span></p>
-                    <p class="info-footer"><span>Phó tổng biên tập : TRẦN VĂN ÁNH</span></p>
-                    <p class="info-footer"><span>Ủy viên HĐBT: ĐOÀN CÔNG CHUNG</span></p>
-                    <p class="info-footer"><span>Tòa soạn trị sự:</span>Tầng 8 Cung Tri thức thành phố, số 1 Tôn Thất Thuyết, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội</p>
-                    <p><span>Điện thoại :</span> 0247.301.6366 * 0283.636.9773  * <span> Email: </span>info@vietnamhoinhap.vn</p>
+                    <p class="info-footer">{{$web_info->license}}</p>
+                    <p class="info-footer"><span>Tổng biên tập : {{$web_info->editor_in_chief}}</span></p>
+                    <p class="info-footer"><span>Phó tổng biên tập : {{$web_info->deputy_editor}}</span></p>
+                    {{-- <p class="info-footer"><span>Ủy viên HĐBT: {{$web_info->senior_executive_editor}}</span></p> --}}
+                    <p class="info-footer"><span>Tòa soạn trị sự:</span>{{$web_info->address}}</p>
+                    <p><span>Điện thoại :</span> {{$web_info->phone}}  * <span> Email: </span>{{$web_info->email}}</p>
                 </div>
 
                 <div class="footer-right">
                     <p class="title">*Vận hành bởi</p>
                     <div class="avatar-cgroup">
-                        <a href="#"><img src="{{asset('/local/resources/assets/images/cgroup.png')}}"></a>
+                        <a href="{{route('index')}}"><img src="{{asset('/local/resources/assets/images/cgroup.png')}}"></a>
                     </div>
                     <p class="version-mobi">Phiên bản mobile</p>
 
                     <div class="logo-social">
                         <div class="google-play">
-                            <a href="#"><img src="{{asset('/local/resources/assets/images/google-play.png')}}"></a>
+                            <a href="{{route('index')}}"><img src="{{asset('/local/resources/assets/images/google-play.png')}}"></a>
                         </div>
                         <div class="appstrore">
-                            <a href="#"><img src="{{asset('/local/resources/assets/images/appstore.png')}}"></a>
+                            <a href="{{route('index')}}"><img src="{{asset('/local/resources/assets/images/appstore.png')}}"></a>
                         </div>
                     </div>
                 </div>

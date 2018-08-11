@@ -16,9 +16,10 @@
                 <div class="top-video">
                     <div class="d-flex">
                         <div class="top-video-player">
-                            @if(file_exists(asset('/local/resources'.$video_top->url_video)))
-                                <video height="415" width="100%">
-                                    <source src="{{ asset('/local/resources'.$video_top->url_video) }}">
+                            @if($video_top->type_link == 1)
+                                <video height="415" width="100%" controls>
+                                    <source src="{{ 'http://vietnamhoinhap.vn'.$video_top->url_video }}" type="video/mp4">
+                                    Your browser does not support HTML5 video.
                                 </video>
                             @else
                                 <iframe width="100%" height="415" src="{{ (file_exists(asset('/local/resources'.$video_top->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$video_top->url_video) ? : '') ? : $video_top->url_video }}">
@@ -60,7 +61,7 @@
                             @else
                                 <a style="text-decoration: none;color: #000000;cursor: pointer"
                                    onclick="play_video('{{$video->id}}')">
-                                    <img style="width: 100%;padding-bottom: 10px" src="{{$video->img_thumbnail}}">
+                                    <img style="width: 100%;padding-bottom: 10px" src="{{$video->avatar}}">
                                     <h3>{{$video->title}}</h3>
                                 </a>
                             @endif

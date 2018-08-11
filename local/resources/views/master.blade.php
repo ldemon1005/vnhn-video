@@ -10,7 +10,7 @@
         <meta property="og:type"               content="video" />
         <meta name="title_header" property="og:title"              content="{{$video_top->title}}" />
         <meta name="summary_header" property="og:description"        content="{!! $video_top->summary !!}" />
-        <meta name="image_header" property="og:image"              content="{{$video_top->img_thumbnail}}" />
+        <meta name="image_header" property="og:image"              content="{{$video_top->avatar}}" />
     @endif
 
     <title>VNHN-Video</title>
@@ -80,7 +80,7 @@
                 $('.url_header').attr('content',data.meta_fb.link);
                 $('.title_header').attr('content',data.meta_fb.title);
                 $('.summary_header').attr('content',data.meta_fb.summary);
-                $('.image_header').attr('content',data.meta_fb.img_thumbnail);
+                $('.image_header').attr('content',data.meta_fb.avatar);
 
             }
         })
